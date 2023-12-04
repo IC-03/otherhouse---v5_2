@@ -2,8 +2,8 @@ from django.db import models
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=100)
-    ussername = models.CharField(max_length=100)
-    contraseña = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    contrasena = models.CharField(max_length=100)
     tel = models.IntegerField()
     fecha_nac = models.DateField()
     tipo_doc = models.TextField()
@@ -22,20 +22,20 @@ class Direccion(models.Model):
 class Inmueble(models.Model):
     arrendador = models.ForeignKey(Usuario, on_delete=models.CASCADE, default=1)
     descripcion = models.TextField()    
-    tamaño = models.CharField(max_length=100)
+    tamano = models.CharField(max_length=100)
     direccion = models.CharField(max_length=100)
     preciobase =  models.IntegerField()
     cupo = models.IntegerField()
     servicios_base = models.TextField()
     servicios_ad = models.TextField()
-    num_baños = models.IntegerField()
+    num_banos = models.IntegerField()
     petfriendly = models.BooleanField()
     def __str__(self):
-        return f'{self.descripcion} - {self.arrendador.ussername}' if self.arrendador else 'Inmueble sin arrendador'
+        return f'{self.descripcion} - {self.arrendador.username}' if self.arrendador else 'Inmueble sin arrendador'
     direccion = models.ForeignKey(Direccion, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.descripcion} - {self.arrendador.ussername}' if self.arrendador else 'Inmueble sin arrendador'
+        return f'{self.descripcion} - {self.arrendador.username}' if self.arrendador else 'Inmueble sin arrendador'
 
 
 class Arriendo(models.Model):
@@ -44,7 +44,7 @@ class Arriendo(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     def __str__(self):
-        return f'{self.usuario.ussername}'
+        return f'{self.usuario.username}'
     def calcular_total_a_pagar(self):
         total_a_pagar = self.inmueble.preciobase
         servicios_adicionales = ServicioAdicional.objects.filter(inmueble=self.inmueble)

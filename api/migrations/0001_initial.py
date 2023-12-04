@@ -16,8 +16,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('nombre', models.CharField(max_length=100)),
-                ('ussername', models.CharField(max_length=100)),
-                ('contraseña', models.CharField(max_length=100)),
+                ('username', models.CharField(max_length=100)),
+                ('contrasena', models.CharField(max_length=100)),
                 ('tel', models.IntegerField()),
                 ('fecha_nac', models.DateField()),
                 ('tipo_doc', models.TextField()),

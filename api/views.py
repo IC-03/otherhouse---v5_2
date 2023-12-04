@@ -10,6 +10,10 @@ from .models import Inmueble
 from .models import Arriendo
 from .models import ServicioAdicional
 
+
+
+
+
 class UsuarioViewset(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class= UsuarioSerializer
